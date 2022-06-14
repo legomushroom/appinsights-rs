@@ -72,5 +72,20 @@ async fn main() {
 }
 ```
 
+## Development
+
+### Regenerate contracts
+
+Install [cargo-make](https://github.com/sagiegurari/cargo-make):
+
+```bash
+cargo install cargo-make
+```
+
+Run `generate-contracts` task (see [./Makefile.toml](Makefile.toml) for more info):
+```bash
+cargo make generate-contracts
+```
+
 ## License
 This project is licensed under the terms of the [MIT](LICENSE) license.

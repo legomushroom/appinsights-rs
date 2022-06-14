@@ -1,0 +1,15 @@
+[config]
+default_to_workspace = false
+
+[tasks.generate-contracts]
+command = "cargo"
+args = [
+    "run",
+    "--package",
+    "appinsights-contracts-codegen",
+    "--",
+    "--input-dir",
+    "./appinsights-contracts-codegen/schema",
+    "--output-dir",
+    "./appinsights/src/contracts",
+]
