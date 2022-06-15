@@ -1,6 +1,8 @@
 use std::convert::TryFrom;
 use std::path::{Path, PathBuf};
 
+use heck::SnakeCase;
+
 pub struct Module {
     name: String,
     file_name: String,
@@ -30,7 +32,7 @@ impl TryFrom<(PathBuf, PathBuf)> for Module {
         let name = source_path
             .file_stem()
             .and_then(|stem| stem.to_str())
-            .map(|stem| stem.to_lowercase())
+            .map(|stem| stem.to_snake_case())
             .ok_or("Unable to get a module name")?;
 
         let file_name = format!("{}.rs", name);
