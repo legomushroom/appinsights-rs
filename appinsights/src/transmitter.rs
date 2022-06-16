@@ -34,7 +34,18 @@ impl Transmitter {
 
     /// Sends a telemetry items to the server.
     pub async fn send(&self, mut items: Vec<Envelope>) -> Result<Response> {
-        let payload = serde_json::to_string(&items)?;
+        let is_asimov_pipeline = match (&items[0]).i_key.as_ref() {
+            Some(key) => key.starts_with("AIF"),
+            None => false,
+        };
+
+        let mut payload = serde_json::to_string(&items)?;
+
+        // remove enclosing `[]` for JSON payload for asimov pipelines
+        if is_asimov_pipeline {
+            payload.remove(0);
+            payload.pop();
+        }
 
         debug!("Sending {:?}", payload);
 
