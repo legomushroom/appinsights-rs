@@ -36,6 +36,8 @@ impl Transmitter {
     pub async fn send(&self, mut items: Vec<Envelope>) -> Result<Response> {
         let payload = serde_json::to_string(&items)?;
 
+        debug!("Sending {:?}", payload);
+
         let response = self.client.post(&self.url).body(payload).send().await?;
         let response = match response.status() {
             StatusCode::OK => {
