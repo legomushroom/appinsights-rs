@@ -202,7 +202,10 @@
         },
         {
           "fieldModifier": "Optional",
-          "fieldDefault": null,
+          "fieldDefault": {
+            "value": 0,
+            "type": "integer"
+          },
           "fieldType": "int64",
           "fieldName": "flags",
           "fieldAttributes": [

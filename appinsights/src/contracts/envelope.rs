@@ -27,7 +27,7 @@ impl Default for Envelope {
             sample_rate: Some(100.0),
             seq: Option::default(),
             i_key: Option::default(),
-            flags: Option::default(),
+            flags: Some(0),
             tags: Option::default(),
             data: Option::default(),
         }
