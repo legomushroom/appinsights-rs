@@ -47,8 +47,7 @@ impl Transmitter {
             payload.pop();
         }
 
-        debug!("sending:");
-        debug!("{}", payload);
+        debug!("sending:\n{:?}", payload);
 
         let response = self.client.post(&self.url).body(payload).send().await?;
         let response = match response.status() {
